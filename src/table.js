@@ -1,12 +1,17 @@
 
 import { Table,Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useEffect, useState } from "react";
 
 
 function TableSection(){
 
-    let userData=[{"user_id":1,"name":"driss","age":31},{"user_id":2,"name":"ait kassi","age":32},{"user_id":2,"name":"ait kassi","age":32},{"user_id":2,"name":"ait kassi","age":32},{"user_id":3,"name":"john","age":44},{"user_id":4,"name":"mike","age":27}]
-
+    const [userData,setUserData]=useState([])
+    useEffect(()=>{
+        fetch('http://localhost:3000/users')
+        .then(res=>res.json())
+        .then(data=>setUserData(data))
+    },[])
     return(
    <div id="myTable">
     <Container>
