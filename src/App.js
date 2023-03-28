@@ -3,6 +3,7 @@ import TableSection from "./table";
 import TitleSection from "./titleSection";
 
 function App() {
+
   return (
     <div>
       <TopNavigationBar></TopNavigationBar>

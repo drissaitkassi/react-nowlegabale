@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function TableSection(){
+
+    let userData=[{"user_id":1,"name":"driss","age":31},{"user_id":2,"name":"ait kassi","age":32},{"user_id":2,"name":"ait kassi","age":32},{"user_id":2,"name":"ait kassi","age":32},{"user_id":3,"name":"john","age":44},{"user_id":4,"name":"mike","age":27}]
+
     return(
    <div id="myTable">
     <Container>
@@ -11,29 +14,28 @@ function TableSection(){
             <thead>
             <tr>
                 <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>Name</th>
+                <th>Age </th>
+                
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colSpan={2}>Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+            {
+                userData.map((data)=> {
+                    return( 
+                        <tr>
+                            <td>{data.user_id}</td>
+                            <td>{data.name}</td>
+                            <td>{data.age}</td>
+                            
+                        </tr>
+                    )
+              
+
+                })
+            }
+           
+           
             </tbody>
         </Table>
       </Container>

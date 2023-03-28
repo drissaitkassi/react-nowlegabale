@@ -7,7 +7,7 @@ function TitleSection(){
 
         <div id="myTitle">
             <Container>
-                <h1>title section </h1>
+                <h1>User Info  </h1>
             </Container>
         </div>
       
