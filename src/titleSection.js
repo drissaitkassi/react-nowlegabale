@@ -1,13 +1,13 @@
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function TitleSection(){
+function TitleSection(props){
 
     return(
 
         <div id="myTitle">
             <Container>
-                <h1>User Info  </h1>
+                <h1>{props.title} </h1>
             </Container>
         </div>
       
@@ -16,4 +16,4 @@ function TitleSection(){
 }
 
 
-export default TitleSection;
+export default TitleSection; 

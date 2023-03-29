@@ -7,12 +7,12 @@ function TopNavigationBar() {
             <div id="myNav">
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
-                        <Navbar.Brand href="#home">React-CRUD-EFREI</Navbar.Brand>
+                        <Navbar.Brand href="/">React-CRUD-EFREI</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#features">Home</Nav.Link>
-                            {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
+                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/add">Add User</Nav.Link>
                             
                         </Nav>
                         <Nav>

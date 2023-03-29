@@ -2,6 +2,7 @@
 import { Table,Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 
 
 function TableSection(){
@@ -20,7 +21,9 @@ function TableSection(){
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Age </th>
+                <th >Age </th>
+                <th>Action </th>
+                
                 
             </tr>
             </thead>
@@ -30,8 +33,12 @@ function TableSection(){
                     return( 
                         <tr>
                             <td>{data.user_id}</td>
-                            <td>{data.name}</td>
-                            <td>{data.age}</td>
+                            <td >{data.name}</td>
+                            <td >{data.age}</td>
+                            <td className="col-3"><Button variant="info" size="sm" >Update</Button><Button className="ms-2" variant="danger" size="sm">Delete</Button></td>
+                            
+
+
                             
                         </tr>
                     )
