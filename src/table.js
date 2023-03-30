@@ -10,8 +10,20 @@ function TableSection(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [userData,setUserData]=useState([])
-    function handleDelete(){
-        fetch('http://localhost:3000/users/23',{method:'DELETE'}).then((res)=>console.log(res))
+
+    function handleDelete(event,id){
+
+        console.log(id)
+        fetch(`http://localhost:3000/users/${id}`,{method:'DELETE'})
+        .then((res)=>{
+            if(res.ok){
+                setUserData(userData.filter((u)=>{
+                    return u.user_id!=id
+                }))
+                
+
+            }
+        })
     }
 
 
@@ -49,7 +61,10 @@ function TableSection(){
                             <td >{data.age}</td>
                             <td className="col-3">
                                 <Button variant="info" size="sm" onClick={handleShow} >Update</Button>
-                                <Button className="ms-2" variant="danger" size="sm" onClick={handleDelete}>Delete</Button>
+                                {/* if we don't pass the event the function get called when the component is mount 
+                                and we dont want that 
+                                we want the function to be called when the on click event get trigered by the button */}
+                                <Button className="ms-2" variant="danger" size="sm" onClick={event =>handleDelete(event,data.user_id)}>Delete</Button>
                             </td>                           
                         </tr>
                     )
