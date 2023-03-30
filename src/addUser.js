@@ -1,28 +1,65 @@
-import { Container , Form,Button} from "react-bootstrap";
+import { useState } from "react";
+import { Container , Form,Button } from "react-bootstrap";
 import TitleSection from "./titleSection";
 
 
 function AddUser(){
+
+    
+
+    const [details,setDetails ]=useState({
+        user_id :"",
+        name :"",
+        age : "",
+    })
+
+    const handleChange=(e)=>{
+
+        const name =e.target.name
+        const value =e.target.value
+        setDetails((prev)=>{
+            return {...prev,[name]:value}
+        })
+        console.log(value);
+    }
+
+    function handelCreateNewUser(e) {
+        
+        fetch('http://localhost:3000/user',{
+            method:"POST",
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(details)
+    
+        }).then(res=>res.json())
+        .then(data=>console.log("sucess"))
+
+    }
+
+   console.log(details)
+
     return(
         <Container id="addUserFormContainer"> 
          <TitleSection title="Add User Form "></TitleSection>
-            <Form>
+            <Form onSubmit={handelCreateNewUser}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                    </Form.Text>
+                    <Form.Label>User id</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Id" name="user_id" onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Name"  name="name" onChange={handleChange}/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Age</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Age" name="age" onChange={handleChange} />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+               
+                <Button variant="primary" type="submit" >
                     Submit
                 </Button>
             </Form>
