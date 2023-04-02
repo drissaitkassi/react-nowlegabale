@@ -7,14 +7,13 @@ import { Link } from 'react-router-dom'
 import { Card,Form } from "react-bootstrap";
 
 
-
-
 function TableSection(){
- 
+    // generale user data state 
+
     const [userData,setUserData]=useState([])
-
+    const [keyword ,setKeyword]=useState('')
+     // handeling deleted entries
     function handleDelete(event,id){
-
         fetch(`http://localhost:3000/users/${id}`,{method:'DELETE'})
         .then((res)=>{
             if(res.ok){
@@ -25,38 +24,50 @@ function TableSection(){
         })
     }
 
-
+    // getting values from on change event 
     const handleChange=(e)=>{
 
-        const name =e.target.name
         const value =e.target.value
-        // setDetails((prev)=>{
-        //     return {...prev,[name]:value}
-        // })
-        // console.log(value);
+        console.log("im called before setKeyord")
+        setKeyword(value)
+        console.log(value);
+    }
+    function handelSearchUser(e) {
+        
+        fetch(`http://localhost:3000/users/${keyword}`)
+        .then(res=>res.json())
+        .then(data=>setKeyword(data))
+
     }
 
+    console.log(`this is ${keyword}`)
+
+    // getting all users 
+
     useEffect(()=>{
-        fetch('http://localhost:3000/users')
+        fetch(`http://localhost:3000/users/${keyword}`)
         .then(res=>res.json())
         .then(data=>setUserData(data))
-    },[])
+    },[keyword])
 
   
 
+
+    // jsx markup and styling 
     return(
    <div id="myTable">
     <Container>
     
-                <Form >
-                    <Form.Group className="mb-3 col-8 " controlId="formBasicEmail">
+                <Form onSubmit={handelSearchUser}>
+                    <Form.Group className="mb-3 col-12 " controlId="formBasicEmail">
                         <Form.Label >Keyword </Form.Label>
-                    
+                        <div className="d-flex col-12">
                         <Form.Control className="d-flex" type="text" placeholder="Enter Keyword" name="keyword" onChange={handleChange}>
                         </Form.Control>
-                        <Button variant="primary" type="submit" >
-                            Submit
+                        <Button className="btn btn-success ms-2 col-1" variant="primary" type="submit" >
+                            Search
                         </Button>
+                        </div>
                     </Form.Group>
                 </Form>
    
