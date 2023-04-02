@@ -7,10 +7,10 @@ import UpdateUser from './UpdateUser';
 import reportWebVitals from './reportWebVitals';
 
 // import ErrorPage from "./error-page";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import {createBrowserRouter,RouterProvider,} from "react-router-dom";
+import Login from './Login';
+import Logout from './Logout';
+import Register from './Register';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,18 @@ const router = createBrowserRouter([
     {
       path: "/add",
       element: <AddUser />,
+    },
+    {
+      path: "/Login",
+      element: <Login />,
+    },
+    {
+      path: "/Logout",
+      element: <Logout />,
+    },
+    {
+      path: "/Register",
+      element: <Register />,
     },
     {
       element: <UpdateUser />,

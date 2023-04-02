@@ -11,9 +11,6 @@ function App() {
       <TitleSection title="User Info List "></TitleSection>
       <TableSection></TableSection>
       <br></br>
-     
-      
-
     </div>
     
   );

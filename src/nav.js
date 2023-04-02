@@ -16,8 +16,8 @@ function TopNavigationBar() {
                             
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets"> Login </Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
+                            <Nav.Link href="/login"> Login </Nav.Link>
+                            <Nav.Link eventKey={2} href="/register">
                                 Signup
                             </Nav.Link>
                         </Nav>

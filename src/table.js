@@ -61,12 +61,9 @@ function TableSection(){
                             </td>                           
                         </tr>
                     )
-              
-
                 })
             }
-           
-           
+               
             </tbody>
         </Table>
        
