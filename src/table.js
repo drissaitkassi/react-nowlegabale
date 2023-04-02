@@ -3,7 +3,6 @@ import { Table,Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import UpdateUser from "./UpdateUser";
 import { Link } from 'react-router-dom'
 
 
@@ -54,7 +53,7 @@ function TableSection(){
                             <td >{data.age}</td>
                             <td className="col-3">
                                 
-                                <Button variant="info" size="sm"  ><Link to={`/update/${data.user_id}`}>Update</Link></Button>
+                                <Button variant="info" size="sm"  ><Link id="update-link" to={`/update/${data.user_id}`}>Update</Link></Button>
                                 {/* if we don't pass the event the function get called when the component is mount 
                                 and we dont want that 
                                 we want the function to be called when the on click event get trigered by the button */}

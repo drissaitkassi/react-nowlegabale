@@ -24,3 +24,8 @@ code {
 
   margin-top: 100px;
 }
+
+#update-link{
+  text-decoration: none;
+  color: white;
+}
