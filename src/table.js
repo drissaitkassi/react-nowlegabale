@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
+import { Card,Form } from "react-bootstrap";
+
 
 
 
@@ -23,6 +25,17 @@ function TableSection(){
         })
     }
 
+
+    const handleChange=(e)=>{
+
+        const name =e.target.name
+        const value =e.target.value
+        // setDetails((prev)=>{
+        //     return {...prev,[name]:value}
+        // })
+        // console.log(value);
+    }
+
     useEffect(()=>{
         fetch('http://localhost:3000/users')
         .then(res=>res.json())
@@ -34,6 +47,19 @@ function TableSection(){
     return(
    <div id="myTable">
     <Container>
+    
+                <Form >
+                    <Form.Group className="mb-3 col-8 " controlId="formBasicEmail">
+                        <Form.Label >Keyword </Form.Label>
+                    
+                        <Form.Control className="d-flex" type="text" placeholder="Enter Keyword" name="keyword" onChange={handleChange}>
+                        </Form.Control>
+                        <Button variant="primary" type="submit" >
+                            Submit
+                        </Button>
+                    </Form.Group>
+                </Form>
+   
         <Table striped bordered hover>
             <thead>
             <tr>
