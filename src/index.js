@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import AddUser from './addUser';
+import UpdateUser from './UpdateUser';
 import reportWebVitals from './reportWebVitals';
 
 // import ErrorPage from "./error-page";
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
     {
       path: "/add",
       element: <AddUser />,
+    },
+    {
+      element: <UpdateUser />,
+      path: "/update/:id",
+      
     },
 ]);
 

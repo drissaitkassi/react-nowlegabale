@@ -5,8 +5,6 @@ import TitleSection from "./titleSection";
 
 function AddUser(){
 
-    
-
     const [details,setDetails ]=useState({
         user_id :"",
         name :"",
@@ -38,7 +36,6 @@ function AddUser(){
 
     }
 
-   console.log(details)
 
     return(
         <Container id="addUserFormContainer"> 
