@@ -22,7 +22,7 @@ function AddUser(){
 
     function handelCreateNewUser(e) {
         
-        fetch('http://localhost:3000/users',{
+        fetch('http://localhost:3000/user',{
             method:"POST",
             headers:{
                 'Accept': 'application/json',
