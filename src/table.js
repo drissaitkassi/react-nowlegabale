@@ -28,7 +28,6 @@ function TableSection(){
     const handleChange=(e)=>{
 
         const value =e.target.value
-        console.log("im called before setKeyord")
         setKeyword(value)
         console.log(value);
     }
@@ -36,7 +35,9 @@ function TableSection(){
         
         fetch(`http://localhost:3000/users/${keyword}`)
         .then(res=>res.json())
-        .then(data=>setKeyword(data))
+        .then(data=>{
+            console.log(data)
+            setKeyword(data)})
 
     }
 
@@ -47,7 +48,10 @@ function TableSection(){
     useEffect(()=>{
         fetch(`http://localhost:3000/users/${keyword}`)
         .then(res=>res.json())
-        .then(data=>setUserData(data))
+        .then(data=>{
+            console.log(data)
+            setUserData(data)
+        })
     },[keyword])
 
   

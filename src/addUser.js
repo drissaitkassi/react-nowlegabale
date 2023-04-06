@@ -6,9 +6,8 @@ import TitleSection from "./titleSection";
 function AddUser(){
 
     const [details,setDetails ]=useState({
-        user_id :"",
-        name :"",
-        age : "",
+        email :"",
+        password : "",
     })
 
     const handleChange=(e)=>{
@@ -23,7 +22,7 @@ function AddUser(){
 
     function handelCreateNewUser(e) {
         
-        fetch('http://localhost:3000/user',{
+        fetch('http://localhost:3000/users',{
             method:"POST",
             headers:{
                 'Accept': 'application/json',
@@ -41,19 +40,16 @@ function AddUser(){
         <Container id="addUserFormContainer"> 
          <TitleSection title="Add User Form "></TitleSection>
             <Form onSubmit={handelCreateNewUser}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>User id</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Id" name="user_id" onChange={handleChange}/>
+              
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Name"  name="email" onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Name"  name="name" onChange={handleChange}/>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Age</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Age" name="age" onChange={handleChange} />
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Age" name="password" onChange={handleChange} />
                 </Form.Group>
                
                 <Button variant="primary" type="submit" >
