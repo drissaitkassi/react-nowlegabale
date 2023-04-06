@@ -86,8 +86,8 @@ function TableSection(){
                     return( 
                         <tr>
                             <td>{data.user_id}</td>
-                            <td >{data.name}</td>
-                            <td >{data.age}</td>
+                            <td >{data.email}</td>
+                            <td >{data.password}</td>
                             <td className="col-3">
                                 
                                 <Button variant="info" size="sm"  ><Link id="update-link" to={`/update/${data.user_id}`}>Update</Link></Button>
