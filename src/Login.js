@@ -1,23 +1,38 @@
 import TopNavigationBar from "./nav";
 import TitleSection from "./titleSection";
 import { Card, Container,Form,Button } from "react-bootstrap";
+import { useState } from "react";
 
 function Login() {
 
-    // const [details,setDetails ]=useState({
-    //     user_id :"",
-    //     name :"",
-    //     age : "",
-    // })
+    const [details,setDetails ]=useState({
+        email :"",
+        password : "",
+    })
 
     const handleChange=(e)=>{
 
         const name =e.target.name
         const value =e.target.value
-        // setDetails((prev)=>{
-        //     return {...prev,[name]:value}
-        // })
-        // console.log(value);
+        setDetails((prev)=>{
+            return {...prev,[name]:value}
+        })
+        console.log(value);
+    }
+
+    function handelLogin(e) {
+        
+        fetch('http://localhost:3000/login',{
+            method:"POST",
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(details)
+    
+        }).then(res=>res.json())
+        .then(data=>console.log("sucess"))
+
     }
 
   return (
@@ -28,7 +43,7 @@ function Login() {
       <Container>
             <Card>
                 <Card.Body>
-                <Form >
+                <Form onSubmit={handelLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email </Form.Label>
                     <Form.Control type="email" placeholder="Enter email" name="email" onChange={handleChange}/>
