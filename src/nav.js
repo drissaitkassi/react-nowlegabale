@@ -12,7 +12,7 @@ function TopNavigationBar() {
                         <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/add">Add User</Nav.Link>
+                            <Nav.Link href="/addproduct">Add Product</Nav.Link>
                             
                         </Nav>
                         <Nav>

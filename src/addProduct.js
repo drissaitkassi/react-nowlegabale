@@ -3,11 +3,13 @@ import { Container , Form,Button } from "react-bootstrap";
 import TitleSection from "./titleSection";
 
 
-function AddUser(){
+function AddProduct(){
 
     const [details,setDetails ]=useState({
-        email :"",
-        password : "",
+        name :"",
+        price : "",
+        description : "",
+        instock : "",
     })
 
     const handleChange=(e)=>{
@@ -22,7 +24,7 @@ function AddUser(){
 
     function handelCreateNewUser(e) {
         
-        fetch('http://localhost:3000/user',{
+        fetch('http://localhost:3000/products',{
             method:"POST",
             headers:{
                 'Accept': 'application/json',
@@ -38,18 +40,28 @@ function AddUser(){
 
     return(
         <Container id="addUserFormContainer"> 
-         <TitleSection title="Add User Form "></TitleSection>
+         <TitleSection title="Add product Form "></TitleSection>
             <Form onSubmit={handelCreateNewUser}>
               
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Name"  name="email" onChange={handleChange}/>
+                    <Form.Label>name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Name"  name="name" onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Age" name="password" onChange={handleChange} />
+                    <Form.Label>price</Form.Label>
+                    <Form.Control type="text" placeholder="Enter price" name="price" onChange={handleChange} />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>description</Form.Label>
+                    <Form.Control type="text" placeholder="Enter description" name="description" onChange={handleChange} />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>instock</Form.Label>
+                    <Form.Control type="text" placeholder="in stock" name="instock" onChange={handleChange} />
                 </Form.Group>
                
                 <Button variant="primary" type="submit" >
@@ -61,4 +73,4 @@ function AddUser(){
     )
 }
 
-export default AddUser;
+export default AddProduct;

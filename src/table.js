@@ -14,11 +14,11 @@ function TableSection(){
     const [keyword ,setKeyword]=useState('')
      // handeling deleted entries
     function handleDelete(event,id){
-        fetch(`http://localhost:3000/users/${id}`,{method:'DELETE'})
+        fetch(`http://localhost:3000/products/${id}`,{method:'DELETE'})
         .then((res)=>{
             if(res.ok){
                 setUserData(userData.filter((u)=>{
-                    return u.user_id!=id
+                    return u.product_id!=id
                 }))  
             }
         })
@@ -29,11 +29,10 @@ function TableSection(){
 
         const value =e.target.value
         setKeyword(value)
-        console.log(value);
     }
-    function handelSearchUser(e) {
+    function handelSearchProduct(e) {
         
-        fetch(`http://localhost:3000/users/${keyword}`)
+        fetch(`http://localhost:3000/products/${keyword}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
@@ -41,12 +40,11 @@ function TableSection(){
 
     }
 
-    console.log(`this is ${keyword}`)
 
     // getting all users 
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/users/${keyword}`)
+        fetch(`http://localhost:3000/products/${keyword}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
@@ -62,7 +60,7 @@ function TableSection(){
    <div id="myTable">
     <Container>
     
-                <Form onSubmit={handelSearchUser}>
+                <Form onSubmit={handelSearchProduct}>
                     <Form.Group className="mb-3 col-12 " controlId="formBasicEmail">
                         <Form.Label >Keyword </Form.Label>
                         <div className="d-flex col-12">
@@ -80,8 +78,10 @@ function TableSection(){
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th >Age </th>
-                <th>Action </th>
+                <th >price </th>
+                <th>description </th>
+                <th>in Stock </th>
+                <th>action </th>
             </tr>
             </thead>
             <tbody>
@@ -89,16 +89,18 @@ function TableSection(){
                 userData.map((data)=> {
                     return( 
                         <tr>
-                            <td>{data.user_id}</td>
-                            <td >{data.email}</td>
-                            <td >{data.password}</td>
+                            <td>{data.product_id}</td>
+                            <td >{data.name}</td>
+                            <td >{data.price}</td>
+                            <td >{data.description}</td>
+                            <td >{data.instock}</td>
                             <td className="col-3">
                                 
-                                <Button variant="info" size="sm"  ><Link id="update-link" to={`/update/${data.user_id}`}>Update</Link></Button>
+                                <Button variant="info" size="sm"  ><Link id="update-link" to={`/update/${data.product_id}`}>Update</Link></Button>
                                 {/* if we don't pass the event the function get called when the component is mount 
                                 and we dont want that 
                                 we want the function to be called when the on click event get trigered by the button */}
-                                <Button className="ms-2" variant="danger" size="sm" onClick={event =>handleDelete(event,data.user_id)}>Delete</Button>
+                                <Button className="ms-2" variant="danger" size="sm" onClick={event =>handleDelete(event,data.product_id)}>Delete</Button>
                             </td>                           
                         </tr>
                     )
